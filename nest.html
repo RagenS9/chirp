@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,fetch,Array.prototype.includes"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/global.css" />
+</head>
+<body>
+
+    <header class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <img src="./img/logo.png" alt="Chirp messaging site logo showing a bird with world pattern" id="chirpLogoMain"/>
+            </div>
+
+            <div class="col-sm-8">
+                <h1>Nest</h1>
+            </div>
+
+            <div class="col-sm-2">
+                <a href>Get the flock out!</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 treePosts">
+                    <h1>Chirp Tree</h1>
+                    </br>
+                    </br>
+                    <!--start user posts-->
+                    <div class="postCard">
+                        <div class="col-sm-4 postUser">
+                            <img class="userImage" src="http://unsplash.it/400?image=700" alt="user profile photo" />
+                            <h3 class="userName text-center">Another Bird</h3>
+                            <a href><span id="unfollow" class="glyphicon glyphicon-remove" aria-hidden="true"</span></a>
+                        </div>
+
+                        <div class="col-sm-8" postText>
+                            <p>This is amazing!</p>
+                        </div>             
+                    </div>
+                    <!--end user post-->
+                </div>
+
+                <div class="col-sm-4 userImage">
+                    <img src="http://unsplash.it/400?image=600" alt="user profile photo" />
+                    <h4><strong>Hello, <span id="userName">User Name</span></strong></h4>
+                    </br>
+                    </br>
+                    <a href>See the flock.</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="js/nest.js"></script>
+</body>
+</html>
