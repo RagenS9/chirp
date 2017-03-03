@@ -26,19 +26,42 @@
     <main>
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 followedUsers">
-                    <h3>Birds You're Tracking</h3>
+                <div class="col-sm-3">
+                    <img class="postIMG" src="http://unsplash.it/400?image=720" alt="user profile photo" />
+                    <h5 class="postBird">AnotherBird</h5>
+                    <!--html checker says that the autocomplete is not allowed on here yet, but I copied this straight out of bootstrap, so I'm not really sure what to do about that.-->
+                        <button type="button" id="status" data-complete-text="follow" class="btn btn-primary" autocomplete="off">
+                            Follow
+                        </button>
+                    <!--<script>
+                        $('#myStateButton').on('click', function () {
+                            $(this).button('complete') // button text will be "finished!"
+                    })
+                    </script>-->
+                    
+                    <!--<a id="status" href="./unfollow.html">Unfollow <span class="glyphicon glyphicon-remove" aria-hidden="true"</span></a>-->
+                    <!--If status === follow, change innerHTML to = unfollow with gylphicon-remove-->
+                    <!--if user clicks unfollow, show alert with cancel and okay buttons to make sure user means to unfollow. look at yellow alert colors in basecamp-->
                 </div>
 
-                <div class="col-sm-6-allUsers">
-                    <h3>Birds in Other Trees</h3>
-                </div>
+                <!--<div class="col-sm-3">
+                    <img class="postIMG" src="http://unsplash.it/400?image=715" alt="user profile photo" />
+                    <h5 class="postBird">YetAnotherBird</h5>
+                        <button type="button" id="status" data-complete-text="follow" class="btn btn-primary" autocomplete="off">
+                        Follow
+                        </button>-->
+                    <!--<a id="status" href="./unfollow.html">Follow <span class="glyphicon glyphicon-plus" aria-hidden="true"</span></a>-->
+                    <!--If status === NULL or unfollow, change innerHTML to = follow with gylphicon-plus-->
+                    <!--if user clicks follow, show success alert with timeout to 3000. look at success alert colors-->
+                <!--</div>-->
             </div>
         </div>
+
+                                            
 
     </main>
 
 
-    <script src="js/global.js"></script>
+    <script src="js/users.js"></script>
 </body>
 </html>

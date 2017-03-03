@@ -25,7 +25,7 @@
             </div>
 
             <!--begin signup form-->
-            <div class="col-sm-5 panel panel-default" id="signUp">
+            <div class="col-sm-5 panel panel-default signUp">
                 <!--<div class="panel panel-default">-->
                     <div class="panel-heading">
                         <h4>Join the Flock</h4>
@@ -43,12 +43,12 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="text" id="username" class="form-control" placeholder="Create a unique user name" required />
+                            <input type="text" class="form-control username" placeholder="Create a unique user name" required />
                             <!--QQRagen: Might need to add a if response that if the username comes back with an error from the database that it is not unique, the user needs to create a more-unique username.-->
                         </div>
 
                         <div class="form-group">
-                            <input type="password" id="password" class="form-control" placeholder="Password" maxlength="72" required />
+                            <input type="password" class="form-control password" placeholder="Password" maxlength="72" required />
                             <!--QQRagen: if missing, need an if to notify the user that it's needed AND if longer than 72 characters, notify user to shorten their stuff.-->
                         </div>
 
@@ -58,7 +58,6 @@
                         </div>
                         
                         <div class="form-group">
-                            <!--<label for="name">Profile picture</label>-->
                             <input type="text" id="image" class="form-control" placeholder="If you'd like, insert a URL for a profile image." />
                         </div>
 
@@ -71,28 +70,25 @@
             </div>
 
             <!--begin sign-in form-->
-            <div class="col-sm-5 panel panel-default" id="signUp">
-                <!--<div class="panel panel-default">-->
+            <div class="col-sm-5 panel panel-default signUp">
                     <div class="panel-heading">
                         <h4>Get Chirping</h4>
                     </div>
                     <div class="panel-body">
                         
                         <div class="form-group">
-                            <!--<label for="name">User name</label>-->
-                            <input type="text" id="username" class="form-control" placeholder="User name" required />
+                            <input type="text" class="form-control username" placeholder="User name" required />
                             <!--QQRagen: if incorrect add warning-->
                         </div>
 
                         <div class="form-group">
-                            <!--<label for="password">Password</label>-->
-                            <input type="password" id="password" class="form-control" placeholder="Password" maxlength="72" required />
+                            <input type="password" class="form-control password" placeholder="Password" maxlength="72" required />
                             <!--QQRagen: if incorrect add warning-->
                         </div>
 
                     </div>
                     <div class="panel-footer text-center">
-                        <a href="./nest.html" class="btn btn-primary">Sign In</a>
+                        <a href="./nest.html" class="btn btn-primary" id="signinButton">Sign In</a>
                     </div>
                     <a href="help.html" class="help-block">Forgot account?</a>
                     <!--QQRagen: go back to this help page, if have time.-->
