@@ -45,6 +45,7 @@ header {
 main {
     background-color: #F0F8F9;
     padding-top: 20px; 
+    padding-bottom: 40px;
 }
 
 h4 {
@@ -68,6 +69,7 @@ h4 {
 .treePosts h1 {
     color: #337AB7;
     font-size: 30px; 
+    /*text-align: center;*/
 }
 
 #postCard {
@@ -77,6 +79,12 @@ h4 {
 
 .postUser {
     text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.card {
+    margin-bottom: 30px;
 }
 
 .postText {
