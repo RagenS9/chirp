@@ -5,5 +5,101 @@ img {
     width: 100%;
 }
 
+/*sign-in or sign up page*/
 /*fix chirpLogoMain size in sm size responsive . . . is huge at smaller sizes*/
+
+/*nest page*/
+
+header {
+    margin-bottom: 20px;
+}
+
+#nestBanner {
+    /*background-color: #3D87C6;*/
+    /*background-color: #86CA94;*/
+    background-color: #48898D;
+    color: white;
+    padding-right: 0px;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+#nestBanner img {
+    max-width: 100px;
+}
+
+#nestBanner a {
+    color: white;
+}
+
+.bannerTitle {
+    text-align: left;
+    font-family: 'Lobster', cursive;
+    font-size: 100px; 
+}
+
+.logout {
+        text-align: right;
+}
+
+main {
+    background-color: #F0F8F9;
+    padding-top: 20px; 
+}
+
+h4 {
+    font-family: 'Lobster', cursive;
+    color: #48898D;
+}
+
+#hello {
+    font-size: 30px;
+}
+
+#userName {
+    font-size: 50px;
+}
+
+.userImage a {
+    font-size: 30px; 
+    text-align: center;
+}
+
+.treePosts h1 {
+    color: #337AB7;
+    font-size: 30px; 
+}
+
+#postCard {
+    margin-bottom: 15px; 
+    margin-top: 15px; 
+}
+
+.postUser {
+    text-align: center;
+}
+
+.postText {
+    background-color: white;
+    border: 2px solid #CCCCCC;
+    border-radius: 5px;
+    padding: 15px; 
+}
+
+.postIMG {
+    border-radius: 50%;
+    max-width: 50px;
+}
+
+.postBird {
+    margin-bottom: 0px; 
+}
+
+#unfollow {
+    font-size: 10px; 
+    color: #999999;
+}
+
+
+
 
