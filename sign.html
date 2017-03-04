@@ -43,12 +43,12 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control username" placeholder="Create a unique user name" required />
+                            <input type="text" class="form-control" id="signUpUserName" placeholder="Create a unique user name" required />
                             <!--QQRagen: Might need to add a if response that if the username comes back with an error from the database that it is not unique, the user needs to create a more-unique username.-->
                         </div>
 
                         <div class="form-group">
-                            <input type="password" class="form-control password" placeholder="Password" maxlength="72" required />
+                            <input type="password" class="form-control" id="signUpPassword" placeholder="Password" maxlength="72" required />
                             <!--QQRagen: if missing, need an if to notify the user that it's needed AND if longer than 72 characters, notify user to shorten their stuff.-->
                         </div>
 
@@ -77,19 +77,22 @@
                     <div class="panel-body">
                         
                         <div class="form-group">
-                            <input type="text" class="form-control username" placeholder="User name" required />
+                            <input type="text" class="form-control username" id="signInUserName" placeholder="User name" required />
                             <!--QQRagen: if incorrect add warning-->
                         </div>
 
                         <div class="form-group">
-                            <input type="password" class="form-control password" placeholder="Password" maxlength="72" required />
+                            <input type="password" class="form-control" id="signInPassword" placeholder="Password" maxlength="72" required />
                             <!--QQRagen: if incorrect add warning-->
                         </div>
 
                     </div>
                     <div class="panel-footer text-center">
-                        <a href="" class="btn btn-primary" id="signinButton">Sign In</a>
+                        <button id="signinButton" type="button" class="btn btn-primary">Sign In</button>
                     </div>
+                    <!--<div class="panel-footer text-center">
+                        <a href="" class="btn btn-primary" id="signinButton">Sign In</a>
+                    </div>-->
                     <a href="help.html" class="help-block">Forgot account?</a>
                     <!--QQRagen: go back to this help page, if have time.-->
                 <!--</div>-->

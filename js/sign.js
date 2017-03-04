@@ -5,8 +5,8 @@ document.querySelector('#signupButton').addEventListener('click', signup);
 function signup() {
     var first_name = document.querySelector('#first_name').value;
     var last_name = document.querySelector('#last_name').value;
-    var username = document.querySelector('#username').value;
-    var password = document.querySelector('#password').value;
+    var username = document.querySelector('#signUpUserName').value;
+    var password = document.querySelector('#signUpPassword').value;
     var image = document.querySelector('#image').value;
 
     fetch('https://sleepy-gorge-91783.herokuapp.com/create', {
@@ -46,15 +46,15 @@ function signup() {
                 console.log(response);
             }
         })
-}
+};
 
 //start signinButton JS
 
 document.querySelector('#signinButton').addEventListener('click', signin);
 
 function signin() {
-    var name = document.querySelector('#username').value;
-    var password = document.querySelector('#password').value;
+    var username = document.querySelector('#signInUserName').value;
+    var password = document.querySelector('#signInPassword').value;
 
     fetch('https://sleepy-gorge-91783.herokuapp.com/login', {
         method: 'POST',
@@ -73,18 +73,18 @@ function signin() {
             return response.json();
         })
         .then(function(response) {
-            // console.log(response);
+            console.log(response);
 
             if (response.token) {
                 // Saves any string into a named spot within your browser for the current domain.
                 sessionStorage.setItem('token', response.token);
                 // sessionStorage.setItem('id', response.id);// check with Kalea about user id 
                 location.href = './nest.html';
-                // location.href = 'https://sleepy-gorge-91783.herokuapp.com/chirps'
+                // location.href = 'https://sleepy-gorge-91783.herokuapp.com/chirps';
             }
             else {
                 alert('There was an error. Check your user name and password.');
                 // console.log(response);
             }
         })
-}
+};
