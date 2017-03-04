@@ -71,12 +71,15 @@ function createMessage(message) {
     document.querySelector('#postWords').innerHTML = messageListItem + currentMessagesHTML;
 }
 
+//need to add keystrokes listener with enter action.
+
 // This is the user chirping text. this is an event listener for the button on that text box.
 document.querySelector('#chirpButton').addEventListener('click', postChirp);
 
 function postChirp(e) {
     var chirps=document.querySelector('#textArea').value
-
+    var token = sessionStorage.getItem('token');
+    
     if (chirps !== null) {
         fetch('https://sleepy-gorge-91783.herokuapp.com/chirps/create', {
             method: 'POST',
