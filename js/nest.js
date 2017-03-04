@@ -1,40 +1,49 @@
-//trying something here to call the user id's image and username. something to do with fetch. 
-// getUser();
+//note: image has been changed to avatar
 
-// function getUser() {
-//     var token = sessionStorage.getItem('token');
+//trying something here to call the user's avatar image and username. something to do with fetch. 
 
-    // fetch('https://sleepy-gorge-91783.herokuapp.com/')
-//     fetch('https://sleepy-gorge-91783.herokuapp.com/' +'token=' + token)
-//         .then(function(response) {
-//             return response.json();
-//         })
+getUser();
 
-//         .then(function(response) {
-//             addUserInfo(response);
-//             addUserImg(response);
-//         })
-// }
+function getUser() {
+    var token = sessionStorage.getItem('token');
 
-// function addUserInfo(token) {
-//     var userName = `<h4><strong><span id="hello">Hello, </span><br/><span id="userName">${token.username}</span></strong></h4>
-//     </div>`;
+    fetch('https://sleepy-gorge-91783.herokuapp.com/chirps?token=' + token)
+        .then(function(response) {
+            return response.json();
+        })
+
+        .then(function(response) {
+            addUserInfo(response),
+            addUserImg(response);
+        })
+};
+
+function addUserInfo(token) {
+    // console.log(addUserInfo);
+    // var token = sessionStorage.getItem('token');
+    var mainUserName = `<h4><strong><span id="hello">Hello, </span><br/><span id="userName">${token.username}</span></strong></h4>
+    </div>`;
    
-//     var currentUserName = document.querySelector('#userName').innerHTML;
-//     document.querySelector('#userName').innerHTML = currentUserName;
-// }
+   document.querySelector('#nesterName').innerHTML += mainUserName;
+
+    // var currentUserName = document.querySelector('#nesterName').innerHTML;
+    // document.querySelector('#nesterName').innerHTML = mainUserName + currentUserName;
+};
+
 
 //wanted to add the user photo and set a default photo if none was provided.
-// function addUserImg(token) {
-//     var mainUserIMG = `<img src="${token.image}" alt="${token.username} profile photo" />`;
+function addUserImg(token) {
+    var mainUserIMG = `<img src="${token.avatar}" alt="${token.username} profile photo" />`;
 
-//     if (mainUserImg === null) {
-//         mainUserImg = `<img src="../img/placeholder.JPG" alt="placeholder profile photo" />`
-//     }
+    if (token.avatar === null) {
+        mainUserImg = `<img src="../img/placeholder.JPG" alt="placeholder profile photo" />`
+    };
    
-//     var currentUserIMG = document.querySelector('#mainUserIMG').innerHTML;
-//     document.querySelector('#mainUserIMG').innerHTML = currentUserIMG;
-// }
+   document.querySelector('#nesterIMG').innerHTML += mainUserIMG;
+
+    // var currentUserIMG = document.querySelector('#nesterIMG').innerHTML;
+    // document.querySelector('#nesterIMG').innerHTML = mainUserIMG + currentUserIMG;
+};
 
 // also might need to refactor this or add a new function to fetch followed chirpers messages. Kalea thinks that grabbing everyone else's will happen on her side.
 
@@ -42,9 +51,7 @@ getMessages();
 
 function getMessages() {
     var token = sessionStorage.getItem('token');
-    // var userId = location.href.split('?')[1].split('=').pop(); //don't know if I need this.
 
-    // fetch('https://sleepy-gorge-91783.herokuapp.com/chirps')
     fetch('https://sleepy-gorge-91783.herokuapp.com/chirps?token=' + token)
     
     .then(function(response) {
@@ -53,26 +60,27 @@ function getMessages() {
     .then(function(response) {
         renderMessagesList(response);
     })
-}
+};
 
 function renderMessagesList(messages) {
     // console.log(messages);
-    messages.forEach(createMessage);
-}
+    messages.forEach(createMessageList);
+};
 
-function createMessage(message) {
+function createMessageList(message) {
     var messageListItem = `<div class="col-xs-3 postUser">
-            <img class="postIMG" src="${message.image}" alt="user profile photo" />
+            <img class="postIMG" src="${message.avatar}" alt="user profile photo" />
             <h5 class="postBird">${message.username}</h5>
         </div>
         <div class="col-xs-9 postText">
             <p id="postWords">${message.body}</p>
-        </div>`;
+        </div>`
    
-    var currentMessagesHTML = document.querySelector('#postWords').innerHTML;
+   document.querySelector('#postCard').innerHTML = messageListItem;
 
-    document.querySelector('#postWords').innerHTML = messageListItem + currentMessagesHTML;
-}
+    // var currentMessagesHTML = document.querySelector('#postWords').innerHTML;
+    // document.querySelector('#postWords').innerHTML = messageListItem + currentMessagesHTML;
+};
 
 //need to add keystrokes listener with enter action.
 
