@@ -7,7 +7,7 @@ function signup() {
     var last_name = document.querySelector('#last_name').value;
     var username = document.querySelector('#signUpUserName').value;
     var password = document.querySelector('#signUpPassword').value;
-    var avatar = document.querySelector('#avatar').value;
+    var image = document.querySelector('#image').value;
 
     fetch('https://sleepy-gorge-91783.herokuapp.com/create', {
         method: 'POST',
@@ -22,7 +22,7 @@ function signup() {
             last_name: last_name,
             username: username,
             password: password,
-            avatar: avatar
+            image: image
         })
     })
         .then(function(response) {
@@ -38,7 +38,7 @@ function signup() {
                 sessionStorage.setItem('first_name', response.first_name);
                 sessionStorage.setItem('last_name', response.last_name);
                 sessionStorage.setItem('username', response.username);
-                sessionStorage.setItem('avatar', response.avatar);
+                sessionStorage.setItem('image', response.image);
                 location.href = './nest.html';
             }
             else {

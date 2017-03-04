@@ -1,4 +1,3 @@
-//note: image has been changed to avatar
 
 //if user clicks follow, show green success alert with timeout to 3000 and change button to unfollow.
 //if user clicks unfollow, show yellow warning walert with button that confirms or cancels the unfollow, if confirmed, change button to follow.
