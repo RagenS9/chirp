@@ -53,7 +53,7 @@ function signup() {
 document.querySelector('#signinButton').addEventListener('click', signin);
 
 function signin() {
-    var name = document.querySelector('#name').value;
+    var name = document.querySelector('#username').value;
     var password = document.querySelector('#password').value;
 
     fetch('https://sleepy-gorge-91783.herokuapp.com/login', {
@@ -79,8 +79,8 @@ function signin() {
                 // Saves any string into a named spot within your browser for the current domain.
                 sessionStorage.setItem('token', response.token);
                 // sessionStorage.setItem('id', response.id);// check with Kalea about user id 
-                // location.href = './nest.html';
-                location.href = 'https://sleepy-gorge-91783.herokuapp.com/chirps'
+                location.href = './nest.html';
+                // location.href = 'https://sleepy-gorge-91783.herokuapp.com/chirps'
             }
             else {
                 alert('There was an error. Check your user name and password.');

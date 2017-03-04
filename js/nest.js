@@ -1,39 +1,40 @@
 //trying something here to call the user id's image and username. something to do with fetch. 
-getUser();
+// getUser();
 
-function getUser() {
-    var token = sessionStorage.getItem('token');
+// function getUser() {
+//     var token = sessionStorage.getItem('token');
 
-    fetch('https://sleepy-gorge-91783.herokuapp.com/' + token)
-        .then(function(response) {
-            return response.json();
-        })
+    // fetch('https://sleepy-gorge-91783.herokuapp.com/')
+//     fetch('https://sleepy-gorge-91783.herokuapp.com/' +'token=' + token)
+//         .then(function(response) {
+//             return response.json();
+//         })
 
-        .then(function(response) {
-            addUserInfo(response);
-            addUserImg(response);
-        })
-}
+//         .then(function(response) {
+//             addUserInfo(response);
+//             addUserImg(response);
+//         })
+// }
 
-function addUserInfo(token) {
-    var userName = `<h4><strong><span id="hello">Hello, </span><br/><span id="userName">${token.username}</span></strong></h4>
-    </div>`;
+// function addUserInfo(token) {
+//     var userName = `<h4><strong><span id="hello">Hello, </span><br/><span id="userName">${token.username}</span></strong></h4>
+//     </div>`;
    
-    var currentUserName = document.querySelector('#userName').innerHTML;
-    document.querySelector('#userName').innerHTML =  currentUserName;
-}
+//     var currentUserName = document.querySelector('#userName').innerHTML;
+//     document.querySelector('#userName').innerHTML = currentUserName;
+// }
 
 //wanted to add the user photo and set a default photo if none was provided.
-function addUserImg(token) {
-    var mainUserIMG = `<img src="${token.image}" alt="${token.username} profile photo" />`;
+// function addUserImg(token) {
+//     var mainUserIMG = `<img src="${token.image}" alt="${token.username} profile photo" />`;
 
-    if (mainUserImg === null) {
-        mainUserImg = `<img src="../img/placeholder.JPG" alt="placeholder profile photo" />`
-    }
+//     if (mainUserImg === null) {
+//         mainUserImg = `<img src="../img/placeholder.JPG" alt="placeholder profile photo" />`
+//     }
    
-    var currentUserIMG = document.querySelector('#mainUserIMG').innerHTML;
-    document.querySelector('#mainUserIMG').innerHTML =  currentUserIMG;
-}
+//     var currentUserIMG = document.querySelector('#mainUserIMG').innerHTML;
+//     document.querySelector('#mainUserIMG').innerHTML = currentUserIMG;
+// }
 
 // also might need to refactor this or add a new function to fetch followed chirpers messages. Kalea thinks that grabbing everyone else's will happen on her side.
 
@@ -43,7 +44,9 @@ function getMessages() {
     var token = sessionStorage.getItem('token');
     // var userId = location.href.split('?')[1].split('=').pop(); //don't know if I need this.
 
-    fetch('https://sleepy-gorge-91783.herokuapp.com/chirps' + token)
+    // fetch('https://sleepy-gorge-91783.herokuapp.com/chirps')
+    fetch('https://sleepy-gorge-91783.herokuapp.com/chirps?token=' + token)
+    
     .then(function(response) {
         return response.json();
     })
@@ -77,11 +80,11 @@ function createMessage(message) {
 document.querySelector('#chirpButton').addEventListener('click', postChirp);
 
 function postChirp(e) {
-    var chirps=document.querySelector('#textArea').value
+    var body = document.querySelector('#textArea').value
     var token = sessionStorage.getItem('token');
-    
-    if (chirps !== null) {
-        fetch('https://sleepy-gorge-91783.herokuapp.com/chirps/create', {
+
+    if (body !== null) {
+        fetch('https://sleepy-gorge-91783.herokuapp.com/chirps/create' + '?body=' + body + '&token=' + token, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -89,7 +92,7 @@ function postChirp(e) {
 
     //what parameters does Kalea need for these posts. probably user ID and text box 
             body: JSON.stringify({
-                body: chirps,
+                body: body,
                 token: token
             })
         })
