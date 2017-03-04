@@ -1,7 +1,9 @@
 
 //trying something here to call the main user's avatar image and username. something to do with fetch. 
 
-//need to get the main user's name and photo.
+//need to get the main user's name and photo since this is their homepage. WillyB1 (willy), AdenBug (buggy), MikeyB (kids), RagenS9 (piperlove). 
+
+//calling the function getting the main user's information
 getUser();
 
 function getUser() {
@@ -18,19 +20,20 @@ function getUser() {
         })
 };
 
+//function to get the user's name.
 function addUserInfo(token) {
     // console.log(addUserInfo);
-    // var token = sessionStorage.getItem('token');
     var mainUserName = `<h4><strong><span id="hello">Hello, </span><br/><span id="userName">${token.username}</span></strong></h4>
     </div>`;
    
    document.querySelector('#nesterName').innerHTML = mainUserName;
 
+//another way i tried to do it, that didn't work.
     // var currentUserName = document.querySelector('#nesterName').innerHTML;
     // document.querySelector('#nesterName').innerHTML = mainUserName + currentUserName;
 };
 
-//wanted to add the main user photo and set a default photo if none was provided.
+//function to pull the main user's photo and set a default photo if none was provided.
 function addUserImg(token) {
     var mainUserIMG = `<img src="${token.image}" alt="${token.username} profile photo" />`;
 
@@ -40,13 +43,13 @@ function addUserImg(token) {
    
    document.querySelector('#nesterIMG').innerHTML = mainUserIMG;
 
-};
-
+//another way i tried to do it, that didn't work.
     // var currentUserIMG = document.querySelector('#nesterIMG').innerHTML;
     // document.querySelector('#nesterIMG').innerHTML = mainUserIMG + currentUserIMG;
+};
 
-// also might need to refactor this or add a new function to fetch followed chirpers messages. Kalea thinks that grabbing everyone else's and putting it in chronological order will happen on her side.  But I'm thinking the order has to be done on my end. And I really don't know how to do that. it'd be some loop thingie. But I can't get anything to show up in the console log, so I don't even know what to look for. And I don't know how to make it only show the ones someone has followed, and not just every message in the bunch. Also not sure how it will know to get someone else's photo, and not the main user's photo.
-
+//get all of the messages.
+//Still need to figure out how to refresh the page automatically whenever there's a new message. Right now have to refresh the page yourself.
 getMessages();
 
 function getMessages() {
@@ -68,6 +71,7 @@ function renderMessagesList(messages) {
 };
 
 function createMessageList(message) {
+    // learned that if you have two columns in here, you have to also grab the row from html. otherwise the formatting goes wild.
     var messageListItem = `<div class="row card">
         <div class="col-xs-3 postUser">
             <img class="postIMG" src="${message.image}" alt="user profile photo" />
@@ -80,14 +84,21 @@ function createMessageList(message) {
    
    document.querySelector('#postCard').innerHTML += messageListItem;
 
+//this was in the classroom example, but it didn't do anything.
     // var currentMessagesHTML = document.querySelector('#postWords').innerHTML;
     // document.querySelector('#postWords').innerHTML = messageListItem + currentMessagesHTML;
 };
 
+// Start code for main user's chirping text. 
+
+// this is an event listener for the button on the main user's chirp text box.
+document.querySelector('#chirpButton').addEventListener('click', postChirp);
+
 //need to add keystrokes listener with enter action.
 
-// This is the user chirping text. this is an event listener for the button on that text box.
-document.querySelector('#chirpButton').addEventListener('click', postChirp);
+//Need to figure out: 
+// 1) how to clear the textArea box once something has posted 
+// 2) refresh the page so that it appears within the message list automatically without having to refresh the page manually. (would we need to do this second thing if that's already figured out in the getMessages function??)
 
 function postChirp(e) {
     var body = document.querySelector('#textArea').value
@@ -100,7 +111,7 @@ function postChirp(e) {
                 'Content-Type': 'application/json'
             },
 
-    //what parameters does Kalea need for these posts. probably user ID and text box 
+            //set the parameters for Kalea (what we're sending to backend) 
             body: JSON.stringify({
                 body: body,
                 token: token
@@ -108,10 +119,13 @@ function postChirp(e) {
         })
     }
 
+//got a 500 error here. Kalea at supper right now, so not working on it.
     else {
         alert('Need to add your chirp before it can post.')
     }
 }
+
+//end JS code. 
 
 //html for the user profile information
     // <div class="col-sm-4 userImage">
