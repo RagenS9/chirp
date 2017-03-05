@@ -1,24 +1,49 @@
+// Kalea Wolff [11:28 AM] 
+// If you send a fetch request to /users it should return a list of our current users. :slightly_smiling_face:
 
+// [11:29]  
+// That'll be helpful for building the follower / following lists.
+
+// Kalea Wolff [3:02 PM] 
+// I've got follows working!
+
+// [3:06]  
+// And now unfollows are working too!
+
+// [3:07]  
+// POST to /users/follow/:username will follow the target :username if they're not already followers.
+
+// [3:07]  
+// POST to /users/unfollow/:username will unfollow.
 //if user clicks follow, show green success alert with timeout to 3000 and change button to unfollow.
 //if user clicks unfollow, show yellow warning walert with button that confirms or cancels the unfollow, if confirmed, change button to follow.
 
+//script that is supposed to go with #status button 
+// <script>
+//     $('#myStateButton').on('click', function () {
+//         $(this).button('complete') // button text will be "finished!"
+//     })
+// </script>
 
 //html for user card on users page
-// <div class="col-sm-3">
-//     <img class="postIMG" src="http://unsplash.it/400?image=715" alt="user profile photo" />
-//     <h5 class="postBird">YetAnotherBird</h5>
+
+// <div class="col-sm-4">
+//     <div class="usersCard">
+//         <img class="userImgTN" src="http://unsplash.it/400?image=720" alt="user profile photo" />
+//         <h5 class="usersCardName">AnotherBird</h5>
 //         <button type="button" id="status" data-complete-text="follow" class="btn btn-primary" autocomplete="off">
 //             Follow
 //         </button>
-// </div>
+//     </div>
 
-//start Collin's js from class:
-// document.querySelector('#users').addEventListener('click', function(e) {
-//     var userListItem = e.target;
-//     var userId = userListItem.dataset.id;
 
-//     location.href = 'messages.html?userId=' + userId;
-// });
+// listen in on the click on buttons
+document.querySelector('#status').addEventListener('click', function(e) {
+    // var userListItem = e.target;
+    // var userId = userListItem.dataset.id;
+
+    // location.href = 'messages.html?userId=' + userId;
+});
 
 // document.querySelector('#logout').addEventListener('click', function() {
 //     sessionStorage.clear();

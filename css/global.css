@@ -108,6 +108,25 @@ h4 {
     color: #999999;
 }
 
+/*followers page*/
 
+#status {
+    color: white; 
+    margin-top: 5px;
+    font-size: 15px; 
+}
 
+.usersCard {
+    text-align: center;
+    margin-bottom: 10px; 
+}
 
+.userImgTN {
+    border-radius: 50%;
+    max-width: 100px;    
+}
+
+.usersCardName {
+    color: #337AB7;
+    font-size: 18px; 
+}

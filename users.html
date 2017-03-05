@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Chirp</title>
+    <title>Chirp Birds</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="text/javascript" src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,fetch,Array.prototype.includes"></script>
@@ -14,7 +14,7 @@
         <div class="row">
 
             <div class="col-sm-10">
-                <h1 class="bannerTitle"><span><img src="./img/logo.png" alt="Chirp messaging site logo showing a bird with world pattern" id="chirpLogoMain"/></span>All the birds</h1>
+                <h1 class="bannerTitle"><span><img src="./img/logo.png" alt="Chirp messaging site logo showing a bird with world pattern" id="chirpLogoMain"/></span>Chirpers</h1>
             </div>
 
             <div class="col-sm-2">
@@ -23,42 +23,24 @@
         </div>
     </header>
 
+<!--original button and notes about button.-->
+                        <!--<a id="status" href="./unfollow.html">Unfollow <span class="glyphicon glyphicon-remove" aria-hidden="true"</span></a>-->
+                        <!--If status === follow, change innerHTML to = unfollow with gylphicon-remove-->
+                        <!--if user clicks unfollow, show alert with cancel and okay buttons to make sure user means to unfollow. look at yellow alert colors in basecamp-->
     <main>
         <div class="container">
             <div class="row">
-                <div class="col-sm-3">
-                    <img class="postIMG" src="http://unsplash.it/400?image=720" alt="user profile photo" />
-                    <h5 class="postBird">AnotherBird</h5>
-                    <!--html checker says that the autocomplete is not allowed on here yet, but I copied this straight out of bootstrap, so I'm not really sure what to do about that.-->
-                        <button type="button" id="status" data-complete-text="follow" class="btn btn-primary" autocomplete="off">
-                            Follow
-                        </button>
-                    <!--<script>
-                        $('#myStateButton').on('click', function () {
-                            $(this).button('complete') // button text will be "finished!"
-                    })
-                    </script>-->
-                    
-                    <!--<a id="status" href="./unfollow.html">Unfollow <span class="glyphicon glyphicon-remove" aria-hidden="true"</span></a>-->
-                    <!--If status === follow, change innerHTML to = unfollow with gylphicon-remove-->
-                    <!--if user clicks unfollow, show alert with cancel and okay buttons to make sure user means to unfollow. look at yellow alert colors in basecamp-->
+                <div class="col-sm-4">
+                    <div class="usersCard">
+                        <img class="userImgTN" src="http://unsplash.it/400?image=720" alt="user profile photo" />
+                        <h5 class="usersCardName">AnotherBird</h5>
+                            <button type="button" id="status" data-complete-text="follow" class="btn btn-primary" autocomplete="off">
+                                Follow
+                            </button>
+                    </div>
                 </div>
-
-                <!--<div class="col-sm-3">
-                    <img class="postIMG" src="http://unsplash.it/400?image=715" alt="user profile photo" />
-                    <h5 class="postBird">YetAnotherBird</h5>
-                        <button type="button" id="status" data-complete-text="follow" class="btn btn-primary" autocomplete="off">
-                        Follow
-                        </button>-->
-                    <!--<a id="status" href="./unfollow.html">Follow <span class="glyphicon glyphicon-plus" aria-hidden="true"</span></a>-->
-                    <!--If status === NULL or unfollow, change innerHTML to = follow with gylphicon-plus-->
-                    <!--if user clicks follow, show success alert with timeout to 3000. look at success alert colors-->
-                <!--</div>-->
             </div>
         </div>
-
-                                            
-
     </main>
 
 

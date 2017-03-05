@@ -43,7 +43,7 @@ function signup() {
             }
             else {
                 alert('There was an error. Make sure your user name is unique to you (might need to add numbers to a first name, for example) and that your password matches from the password box to the confirm password box.');
-                console.log(response);
+                // console.log(response);
             }
         })
 };
@@ -73,7 +73,7 @@ function signin() {
             return response.json();
         })
         .then(function(response) {
-            console.log(response);
+            // console.log(response);
 
             if (response.token) {
                 // Saves any string into a named spot within your browser for the current domain.

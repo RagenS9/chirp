@@ -1,6 +1,3 @@
-
-//trying something here to call the main user's avatar image and username. something to do with fetch. 
-
 //need to get the main user's name and photo since this is their homepage. WillyB1 (willy), AdenBug (buggy), MikeyB (kids), RagenS9 (piperlove). 
 
 //calling the function getting the main user's information
@@ -27,10 +24,6 @@ function addUserInfo(token) {
     </div>`;
    
    document.querySelector('#nesterName').innerHTML = mainUserName;
-
-//another way i tried to do it, that didn't work.
-    // var currentUserName = document.querySelector('#nesterName').innerHTML;
-    // document.querySelector('#nesterName').innerHTML = mainUserName + currentUserName;
 };
 
 //function to pull the main user's photo and set a default photo if none was provided.
@@ -42,14 +35,9 @@ function addUserImg(token) {
     };
    
    document.querySelector('#nesterIMG').innerHTML = mainUserIMG;
-
-//another way i tried to do it, that didn't work.
-    // var currentUserIMG = document.querySelector('#nesterIMG').innerHTML;
-    // document.querySelector('#nesterIMG').innerHTML = mainUserIMG + currentUserIMG;
 };
 
 //get all of the messages.
-//Still need to figure out how to refresh the page automatically whenever there's a new message. Right now have to refresh the page yourself.
 getMessages();
 
 function getMessages() {
@@ -70,6 +58,8 @@ function renderMessagesList(messages) {
     messages.forEach(createMessageList);
 };
 
+// think i need to add "location.href = './nest.html';"" somewhere in here to refresh the page. but i want it only to happen when there's a new post . . . not constantly. Not sure how to do it. Maybe some kind of if statement?
+
 function createMessageList(message) {
     // learned that if you have two columns in here, you have to also grab the row from html. otherwise the formatting goes wild.
     var messageListItem = `<div class="row card">
@@ -82,50 +72,52 @@ function createMessageList(message) {
         </div>
     </div>`;
    
-   document.querySelector('#postCard').innerHTML += messageListItem;
+    document.querySelector('#postCard').innerHTML += messageListItem;
 
-//this was in the classroom example, but it didn't do anything.
-    // var currentMessagesHTML = document.querySelector('#postWords').innerHTML;
-    // document.querySelector('#postWords').innerHTML = messageListItem + currentMessagesHTML;
 };
 
-// Start code for main user's chirping text. 
+// posting a chirp
 
-// this is an event listener for the button on the main user's chirp text box.
 document.querySelector('#chirpButton').addEventListener('click', postChirp);
-
 //need to add keystrokes listener with enter action.
 
-//Need to figure out: 
-// 1) how to clear the textArea box once something has posted 
-// 2) refresh the page so that it appears within the message list automatically without having to refresh the page manually. (would we need to do this second thing if that's already figured out in the getMessages function??)
+//Need to figure out why warning box from else statment won't work. 
 
-function postChirp(e) {
-    var body = document.querySelector('#textArea').value
+function postChirp() {
+    var body = document.querySelector('#textArea').value;
     var token = sessionStorage.getItem('token');
 
-    if (body !== null) {
-        fetch('https://sleepy-gorge-91783.herokuapp.com/chirps/create' + '?body=' + body + '&token=' + token, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+    fetch('https://sleepy-gorge-91783.herokuapp.com/chirps/create' + '?body=' + body + '&token=' + token, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
 
-            //set the parameters for Kalea (what we're sending to backend) 
-            body: JSON.stringify({
-                body: body,
-                token: token
-            })
+        body: JSON.stringify({
+            body: body,
         })
-    }
+    })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(response) {
 
-//got a 500 error here. Kalea at supper right now, so not working on it.
-    else {
-        alert('Need to add your chirp before it can post.')
-    }
-}
+            if (response.token) {
+                sessionStorage.setItem('body', response.body);
+            }
 
-//end JS code. 
+            if (body !== null) {
+                location.href = './nest.html';
+                document.querySelector('#textArea').innerHTML = '';
+            }
+
+            else {
+                alert('Need to add your chirp before it can post.');
+            }
+        })
+};
+
+//end js.
 
 //html for the user profile information
     // <div class="col-sm-4 userImage">
@@ -147,3 +139,60 @@ function postChirp(e) {
         // <div class="col-xs-9 postText">
         //     <p id="postWords">placeholder text</p>
         // </div>
+
+// original setup for the chirpings
+// Start code for main user's chirping text. 
+
+// this is an event listener for the button on the main user's chirp text box.
+// document.querySelector('#chirpButton').addEventListener('click', postChirp);
+
+//need to add keystrokes listener with enter action.
+
+//Need to figure out: 
+// 1) how to clear the textArea box once something has posted 
+// 2) refresh the page so that it appears within the message list automatically without having to refresh the page manually. (would we need to do this second thing if that's already figured out in the getMessages function??)
+
+// function postChirp(e) {
+    // var body = document.querySelector('#textArea').value;
+    // var token = sessionStorage.getItem('token');
+
+    // if (body !== null) {
+        // fetch('https://sleepy-gorge-91783.herokuapp.com/chirps/create' + '?body=' + body + '&token=' + token, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+
+            //set the parameters for Kalea (what we're sending to backend) 
+        //     body: JSON.stringify({
+        //         body: body,
+        //         token: token
+        //     })
+        // })
+
+        //     .then(function(response) {
+        //         return response.json();
+        //     })
+        //     .then(function(response) {
+        // })
+//     }
+
+//     else {
+//         alert('Need to add your chirp before it can post.');
+//     }
+// };
+
+
+//another way i tried to write the querySelector for getting hte main user name, that didn't work.
+    // var currentUserName = document.querySelector('#nesterName').innerHTML;
+    // document.querySelector('#nesterName').innerHTML = mainUserName + currentUserName;
+
+
+
+//another way i tried to do the end part of the main user image, that didn't work.
+    // var currentUserIMG = document.querySelector('#nesterIMG').innerHTML;
+    // document.querySelector('#nesterIMG').innerHTML = mainUserIMG + currentUserIMG;
+
+    //this was in the classroom example for making messages, but it didn't do anything.
+    // var currentMessagesHTML = document.querySelector('#postWords').innerHTML;
+    // document.querySelector('#postWords').innerHTML = messageListItem + currentMessagesHTML;
