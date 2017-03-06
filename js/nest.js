@@ -19,11 +19,12 @@ function getUser() {
 
 //function to get the user's name.
 function addUserInfo(user) {
-    // console.log(addUserInfo);
     var mainUserName = `<h4><strong><span id="hello">Hello, </span><br/><span id="userName">${user.username}</span></strong></h4>
     </div>`;
    
    document.querySelector('#nesterName').innerHTML = mainUserName;
+
+   console.log(mainUserName);
 };
 
 //function to pull the main user's photo and set a default photo if none was provided.
@@ -123,11 +124,11 @@ function postChirp() {
         })
 };
 
-//need a function for logging out.
+//need a function for logging out. copied this right out of collin's code, but it's not working here.
 document.querySelector('.logout').addEventListener('click', function() {
     sessionStorage.clear();
     location.href = './sign.html?logout=yes';
-    // sessionStorage.removeItem('token');
+    // sessionStorage.removeItem('token'); //Collin had this in his code. But he had commented it out without any notes added, so I don't know why he had it originally or why he removed it from the code.
 });
 
 //end js.
@@ -199,8 +200,6 @@ document.querySelector('.logout').addEventListener('click', function() {
 //another way i tried to write the querySelector for getting hte main user name, that didn't work.
     // var currentUserName = document.querySelector('#nesterName').innerHTML;
     // document.querySelector('#nesterName').innerHTML = mainUserName + currentUserName;
-
-
 
 //another way i tried to do the end part of the main user image, that didn't work.
     // var currentUserIMG = document.querySelector('#nesterIMG').innerHTML;

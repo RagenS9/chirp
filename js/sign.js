@@ -48,6 +48,13 @@ function signup() {
         })
 };
 
+//event listener so that someone can hit enter upon entering password and sign in.
+document.querySelector('#signInPassword').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        signin();
+    }
+})
+
 //start signinButton JS
 
 document.querySelector('#signinButton').addEventListener('click', signin);
@@ -66,7 +73,7 @@ function signin() {
         // Front-end controls the variables names and values on the right side
         body: JSON.stringify({
             username: username,
-            password: password,
+            password: password
         })
     })
         .then(function(response) {
