@@ -33,7 +33,8 @@ function signup() {
 
             if (response.token) {
                 // Saves any string into a named spot within your browser for the current domain.
-                sessionStorage.setItem('token', response.token);
+                // sessionStorage.setItem('token', response.token);
+                sessionStorage.setItem('user', JSON.stringify(response));
                 // sessionStorage.setItem('id', response.id); // check with Kalea about user id. Kalea says we're not using id, so don't need this. And I can't remember why Jeff said that we might need it. 
                 sessionStorage.setItem('first_name', response.first_name);
                 sessionStorage.setItem('last_name', response.last_name);
@@ -84,7 +85,8 @@ function signin() {
 
             if (response.token) {
                 // Saves any string into a named spot within your browser for the current domain.
-                sessionStorage.setItem('token', response.token);
+                // sessionStorage.setItem('token', response.token);
+                sessionStorage.setItem('user', JSON.stringify(response));
                 // sessionStorage.setItem('id', response.id);// check with Kalea about user id 
                 location.href = './nest.html';
                 // location.href = 'https://sleepy-gorge-91783.herokuapp.com/chirps';

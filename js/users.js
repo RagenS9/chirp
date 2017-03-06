@@ -4,9 +4,9 @@
 getUsers();
 
 function getUsers() {
-    var token = sessionStorage.getItem('token');
+    var user = JSON.parse(sessionStorage.getItem('user'));
 
-    fetch('https://sleepy-gorge-91783.herokuapp.com/users?token=' + token)
+    fetch('https://sleepy-gorge-91783.herokuapp.com/users?token=' + user.token)
     .then(function(response) {
         return response.json();
     })

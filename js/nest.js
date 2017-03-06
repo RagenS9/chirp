@@ -4,17 +4,10 @@
 getUser();
 
 function getUser() {
-    var token = sessionStorage.getItem('token');
+    var user = JSON.parse(sessionStorage.getItem('user'));
 
-    fetch('https://sleepy-gorge-91783.herokuapp.com/chirps?token=' + token)
-        .then(function(response) {
-            return response.json();
-        })
-
-        .then(function(response) {
-            addUserInfo(response),
-            addUserImg(response);
-        })
+    addUserInfo(user);
+    addUserImg(user);
 };
 
 //function to get the user's name.
@@ -44,14 +37,15 @@ function addUserImg(user) {
 getMessages();
 
 function getMessages() {
-    var token = sessionStorage.getItem('token');
+    var user = JSON.parse(sessionStorage.getItem('user'));
 
-    fetch('https://sleepy-gorge-91783.herokuapp.com/chirps?token=' + token)
+    fetch('https://sleepy-gorge-91783.herokuapp.com/chirps?token=' + user.token)
     
     .then(function(response) {
         return response.json();
     })
     .then(function(response) {
+        response=response.reverse();
         renderMessagesList(response);
     })
 };
@@ -75,7 +69,7 @@ function createMessageList(message) {
         </div>
     </div>`;
    
-    document.querySelector('#postCard').innerHTML += messageListItem;
+    document.querySelector('#postCard').innerHTML = messageListItem + document.querySelector('#postCard').innerHTML;
 
 };
 
@@ -92,36 +86,33 @@ document.querySelector('#textArea').addEventListener('keypress', function(e) {
 
 function postChirp() {
     var body = document.querySelector('#textArea').value;
-    var token = sessionStorage.getItem('token');
+    var user = JSON.parse(sessionStorage.getItem('user'));
 
-    fetch('https://sleepy-gorge-91783.herokuapp.com/chirps/create' + '?body=' + body + '&token=' + token, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+    if (body !== '') {
+        fetch('https://sleepy-gorge-91783.herokuapp.com/chirps/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
 
-        body: JSON.stringify({
-            body: body,
-        })
-    })
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(response) {
+                body: JSON.stringify({
+                    body: body,
+                    token: user.token
+                })
+            })
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(response) {
+                    document.querySelector('#textArea').value = '';
+                    createMessageList(response);
+                })
+    }
 
-            if (response.token) {
-                sessionStorage.setItem('body', response.body);
-            }
-
-            if (body !== null) {
-                location.href = './nest.html';
-                document.querySelector('#textArea').innerHTML = '';
-            }
-// hmmm. the page is reloading even if there's nothing in the text box. Don't know why that's happening. But it's reloading and not giving alert box. 
-            else {
-                alert('Need to add your chirp before it can post.');
-            }
-        })
+    else {
+        alert('You must enter your chirp first!');
+    }
+    
 };
 
 //need a function for logging out. copied this right out of collin's code, but it's not working here.
