@@ -127,7 +127,7 @@ function postChirp() {
 //need a function for logging out. copied this right out of collin's code, but it's not working here.
 document.querySelector('.logout').addEventListener('click', function() {
     sessionStorage.clear();
-    location.href = './sign.html?logout=yes';
+    location.href = './index.html?logout=yes';
     // sessionStorage.removeItem('token'); //Collin had this in his code. But he had commented it out without any notes added, so I don't know why he had it originally or why he removed it from the code.
 });
 
