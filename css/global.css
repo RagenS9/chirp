@@ -113,7 +113,8 @@ h4 {
 #status {
     color: white; 
     margin-top: 5px;
-    font-size: 15px; 
+    margin-bottom: 10px; 
+    font-size: 12px;
 }
 
 .usersCard {

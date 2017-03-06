@@ -18,21 +18,21 @@ function getUser() {
 };
 
 //function to get the user's name.
-function addUserInfo(token) {
+function addUserInfo(user) {
     // console.log(addUserInfo);
-    var mainUserName = `<h4><strong><span id="hello">Hello, </span><br/><span id="userName">${token.username}</span></strong></h4>
+    var mainUserName = `<h4><strong><span id="hello">Hello, </span><br/><span id="userName">${user.username}</span></strong></h4>
     </div>`;
    
    document.querySelector('#nesterName').innerHTML = mainUserName;
 };
 
 //function to pull the main user's photo and set a default photo if none was provided.
-function addUserImg(token) {
-    var mainUserIMG = `<img src="${token.image}" alt="${token.username} profile photo" />`;
+function addUserImg(user) {
+    var mainUserIMG = `<img src="${user.avatar}" alt="${user.username} profile photo" />`;
 
-    if (token.image == null) {
-        mainUserIMG = `<img src="../img/placeholder.JPG" alt="placeholder profile photo" />`
-    };
+    // if (user.avatar == null) {
+    //     mainUserIMG = `<img src="../img/placeholder.JPG" alt="placeholder profile photo" />`
+    // };
    
    document.querySelector('#nesterIMG').innerHTML = mainUserIMG;
 };
@@ -64,8 +64,8 @@ function createMessageList(message) {
     // learned that if you have two columns in here, you have to also grab the row from html. otherwise the formatting goes wild.
     var messageListItem = `<div class="row card">
         <div class="col-xs-3 postUser">
-            <img class="postIMG" src="${message.image}" alt="user profile photo" />
-            <h5 class="postBird">${message.username}</h5>
+            <img class="postIMG" src="${message.user.avatar}" alt="${message.user.username} profile photo" />
+            <h5 class="postBird">${message.user.username}</h5>
         </div>
         <div class="col-xs-9 postText">
             <p id="postWords">${message.body}</p>
@@ -79,7 +79,11 @@ function createMessageList(message) {
 // posting a chirp
 
 document.querySelector('#chirpButton').addEventListener('click', postChirp);
-//need to add keystrokes listener with enter action.
+document.querySelector('#textArea').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        postChirp();
+    }
+})
 
 //Need to figure out why warning box from else statment won't work. 
 
@@ -110,12 +114,19 @@ function postChirp() {
                 location.href = './nest.html';
                 document.querySelector('#textArea').innerHTML = '';
             }
-
+// hmmm. the page is reloading even if there's nothing in the text box. Don't know why that's happening. But it's reloading and not giving alert box. 
             else {
                 alert('Need to add your chirp before it can post.');
             }
         })
 };
+
+//need a function for logging out.
+document.querySelector('.logout').addEventListener('click', function() {
+    sessionStorage.clear();
+    location.href = './sign.html?logout=yes';
+    // sessionStorage.removeItem('token');
+});
 
 //end js.
 
