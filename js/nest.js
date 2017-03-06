@@ -30,8 +30,10 @@ function addUserInfo(user) {
 function addUserImg(user) {
     var mainUserIMG = `<img src="${user.avatar}" alt="${user.username} profile photo" />`;
 
+//i had this so that if there wasn't a user photo provided, a placeholder photo would be added. it seems to completely override any photo provided and only the bluebird shows. I tried commenting it out, and now I have no user image in the main part of the page at all. We had the photo URL working before I left this afternoon. I haven't touched the code since then, but suddenly the photos aren't loading to the back end when I make a new user. Kalea says that the keys I'm using are still good.
     // if (user.avatar == null) {
-    //     mainUserIMG = `<img src="../img/placeholder.JPG" alt="placeholder profile photo" />`
+    //     mainUserIMG = `<img src="https://raw.githubusercontent.com/RagenS9/chirp/3969a24a79e0fda25b3dd3ceaf71f4edc3a2af78/img/placeholder.JPG" alt="placeholder profile photo" />`
+    //     // mainUserIMG = `<img src="../img/placeholder.JPG" alt="placeholder profile photo" />`
     // };
    
    document.querySelector('#nesterIMG').innerHTML = mainUserIMG;
