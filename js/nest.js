@@ -1,5 +1,3 @@
-//need to get the main user's name and photo since this is their homepage. WillyB1 (willy), AdenBug (buggy), MikeyB (kids), RagenS9 (piperlove). 
-
 //calling the function getting the main user's information
 getUser();
 
@@ -17,7 +15,7 @@ function addUserInfo(user) {
    
    document.querySelector('#nesterName').innerHTML = mainUserName;
 
-   console.log(mainUserName);
+//    console.log(mainUserName);
 };
 
 //function to pull the main user's photo and set a default photo if none was provided.
@@ -45,7 +43,7 @@ function getMessages() {
         return response.json();
     })
     .then(function(response) {
-        response=response.reverse();
+        // response=response.reverse();
         renderMessagesList(response);
     })
 };
@@ -68,9 +66,9 @@ function createMessageList(message) {
             <p id="postWords">${message.body}</p>
         </div>
     </div>`;
-   
-    document.querySelector('#postCard').innerHTML = messageListItem + document.querySelector('#postCard').innerHTML;
-
+    document.querySelector('#postCard').innerHTML += messageListItem;
+    // document.querySelector('#postCard').innerHTML = document.querySelector('#postCard').innerHTML + messageListItem;
+    // originally had it messageListItem + document . . ., but this was bringing in the message list backwards. Even though it's putting the latest message "first," the code was telling each message to come in at the top, so it was pushing the latest message down as the rest filtered in. instead, have to use +=messageListItem or the long version, document.querySelector('#postCard').innerHTML + messageListItem;
 };
 
 // posting a chirp
@@ -118,84 +116,6 @@ function postChirp() {
 //need a function for logging out. copied this right out of collin's code, but it's not working here.
 document.querySelector('.logout').addEventListener('click', function() {
     sessionStorage.clear();
-    location.href = './index.html?logout=yes';
-    // sessionStorage.removeItem('token'); //Collin had this in his code. But he had commented it out without any notes added, so I don't know why he had it originally or why he removed it from the code.
+    // alert("You signed out!");
+    location.href = './index.html';
 });
-
-//end js.
-
-//html for the user profile information
-    // <div class="col-sm-4 userImage">
-    //     <img src="http://unsplash.it/400?image=600" alt="user profile photo" />
-    //         <h4><strong><span id="hello">Hello, </span><br/><span id="userName">UserName</span></strong></h4>
-    // </div>
-
-// html for the user input text box
-                    // <textarea class="form-control" id="textArea" rows="3" maxlength="160" placeholder="What's the chirp? ..."></textarea>
-                    //     <span class="input-group-btn">
-                    //         <button class="btn btn-default" type="button">Chirp!</button>
-                    //     </span>
-
-// html for the post list that needs to be both the user and other user's posts, in chronological order.
-        // <div class="col-xs-3 postUser">
-        //     <img class="postIMG" src="http://unsplash.it/400?image=700" alt="user profile photo" />
-        //     <h5 class="postBird">AnotherBird</h5>
-        // </div>
-        // <div class="col-xs-9 postText">
-        //     <p id="postWords">placeholder text</p>
-        // </div>
-
-// original setup for the chirpings
-// Start code for main user's chirping text. 
-
-// this is an event listener for the button on the main user's chirp text box.
-// document.querySelector('#chirpButton').addEventListener('click', postChirp);
-
-//need to add keystrokes listener with enter action.
-
-//Need to figure out: 
-// 1) how to clear the textArea box once something has posted 
-// 2) refresh the page so that it appears within the message list automatically without having to refresh the page manually. (would we need to do this second thing if that's already figured out in the getMessages function??)
-
-// function postChirp(e) {
-    // var body = document.querySelector('#textArea').value;
-    // var token = sessionStorage.getItem('token');
-
-    // if (body !== null) {
-        // fetch('https://sleepy-gorge-91783.herokuapp.com/chirps/create' + '?body=' + body + '&token=' + token, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-
-            //set the parameters for Kalea (what we're sending to backend) 
-        //     body: JSON.stringify({
-        //         body: body,
-        //         token: token
-        //     })
-        // })
-
-        //     .then(function(response) {
-        //         return response.json();
-        //     })
-        //     .then(function(response) {
-        // })
-//     }
-
-//     else {
-//         alert('Need to add your chirp before it can post.');
-//     }
-// };
-
-
-//another way i tried to write the querySelector for getting hte main user name, that didn't work.
-    // var currentUserName = document.querySelector('#nesterName').innerHTML;
-    // document.querySelector('#nesterName').innerHTML = mainUserName + currentUserName;
-
-//another way i tried to do the end part of the main user image, that didn't work.
-    // var currentUserIMG = document.querySelector('#nesterIMG').innerHTML;
-    // document.querySelector('#nesterIMG').innerHTML = mainUserIMG + currentUserIMG;
-
-    //this was in the classroom example for making messages, but it didn't do anything.
-    // var currentMessagesHTML = document.querySelector('#postWords').innerHTML;
-    // document.querySelector('#postWords').innerHTML = messageListItem + currentMessagesHTML;
