@@ -23,7 +23,7 @@ function renderUsersList(users) {
     users.forEach(function(user) {
         var userListItem = `<div class="col-xs-4">
             <div class="usersCard">
-                <img class="userImgTN" src="${user.avatar}" alt="${user.username} profile photo"/>
+                <img class="userImgTN" src="${user.image}" alt="${user.username} profile photo"/>
                 <h5 class="usersCardName">${user.username}</h5>
                 <button type='button' class='btn-status btn btn-lg btn-primary' data-username="${user.username}">Follow</button>
             </div>

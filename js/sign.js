@@ -22,7 +22,7 @@ function signup() {
             last_name: last_name,
             username: username,
             password: password,
-            avatar: image
+            image: image
         })
     })
         .then(function(response) {
