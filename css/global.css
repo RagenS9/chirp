@@ -6,17 +6,13 @@ img {
 }
 
 /*sign-in or sign up page*/
-/*fix chirpLogoMain size in sm size responsive . . . is huge at smaller sizes*/
 
 /*nest page*/
-
 header {
     margin-bottom: 20px;
 }
 
 #nestBanner {
-    /*background-color: #3D87C6;*/
-    /*background-color: #86CA94;*/
     background-color: #48898D;
     color: white;
     padding-right: 0px;
@@ -69,7 +65,6 @@ h4 {
 .treePosts h1 {
     color: #337AB7;
     font-size: 30px; 
-    /*text-align: center;*/
 }
 
 #postCard {

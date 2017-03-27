@@ -15,7 +15,6 @@
     <br/>
     <br/>
     <div class="container">
-        <!--put this div with logged out here because he had it in the class example, but I'm not sure I need it. -->
         <div id="loggedout"></div> 
         <br/>
         <br/>
@@ -27,7 +26,6 @@
 
             <!--begin signup form-->
             <div class="col-sm-5 panel panel-default signUp">
-                <!--<div class="panel panel-default">-->
                     <div class="panel-heading">
                         <h4>Join the Flock</h4>
                     </div>
@@ -35,27 +33,22 @@
                         
                         <div class="form-group">
                             <input type="text" id="first_name" class="form-control" placeholder="First name" required />
-                            <!--QQRagen: if missing, need an if to notify the user that it's needed.-->
                         </div>
 
                         <div class="form-group">
                             <input type="text" id="last_name" class="form-control" placeholder="Last name" required />
-                            <!--QQRagen: if missing, need an if to notify the user that it's needed.-->
                         </div>
 
                         <div class="form-group">
                             <input type="text" class="form-control" id="signUpUserName" placeholder="Create a unique user name" required />
-                            <!--QQRagen: Might need to add a if response that if the username comes back with an error from the database that it is not unique, the user needs to create a more-unique username.-->
                         </div>
 
                         <div class="form-group">
                             <input type="password" class="form-control" id="signUpPassword" placeholder="Password" maxlength="72" required />
-                            <!--QQRagen: if missing, need an if to notify the user that it's needed AND if longer than 72 characters, notify user to shorten their stuff.-->
                         </div>
 
                         <div class="form-group">
                             <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" maxlength="72" required />
-                            <!--QQRagen: if missing, need an if to notify the user that it's needed AND if longer than 72 characters, notify user to shorten their stuff AND if it doesn't === password, notify passwords don't match.-->
                         </div>
                         
                         <div class="form-group">
@@ -79,25 +72,17 @@
                         
                         <div class="form-group">
                             <input type="text" class="form-control username" id="signInUserName" placeholder="User name" required />
-                            <!--QQRagen: if incorrect add warning-->
                         </div>
 
                         <div class="form-group">
                             <input type="password" class="form-control" id="signInPassword" placeholder="Password" maxlength="72" required />
-                            <!--QQRagen: if incorrect add warning-->
                         </div>
 
                     </div>
                     <div class="panel-footer text-center">
                         <button id="signinButton" type="button" class="btn btn-primary">Sign In</button>
                     </div>
-                    <!--<div class="panel-footer text-center">
-                        <a href="" class="btn btn-primary" id="signinButton">Sign In</a>
-                    </div>-->
                     <a href="help.html" class="help-block">Forgot account?</a>
-                    <!--QQRagen: go back to this help page, if have time.-->
-                <!--</div>-->
-                <!--end sign-in form-->
             </div>
 
         </div>

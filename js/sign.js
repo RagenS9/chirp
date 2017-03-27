@@ -85,15 +85,11 @@ function signin() {
 
             if (response.token) {
                 // Saves any string into a named spot within your browser for the current domain.
-                // sessionStorage.setItem('token', response.token);
                 sessionStorage.setItem('user', JSON.stringify(response));
-                // sessionStorage.setItem('id', response.id);// check with Kalea about user id 
                 location.href = './nest.html';
-                // location.href = 'https://sleepy-gorge-91783.herokuapp.com/chirps';
             }
             else {
                 alert('There was an error. Check your user name and password.');
-                // console.log(response);
             }
         })
 };

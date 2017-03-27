@@ -21,12 +21,6 @@ function addUserInfo(user) {
 //function to pull the main user's photo and set a default photo if none was provided.
 function addUserImg(user) {
     var mainUserIMG = `<img src="${user.image}" alt="${user.username} profile photo" />`;
-
-//i had this so that if there wasn't a user photo provided, a placeholder photo would be added. it seems to completely override any photo provided and only the bluebird shows. I tried commenting it out, and now I have no user image in the main part of the page at all. We had the photo URL working before I left this afternoon. I haven't touched the code since then, but suddenly the photos aren't loading to the back end when I make a new user. Kalea says that the keys I'm using are still good.
-    // if (user.image == null) {
-    //     mainUserIMG = `<img src="https://raw.githubusercontent.com/RagenS9/chirp/3969a24a79e0fda25b3dd3ceaf71f4edc3a2af78/img/placeholder.JPG" alt="placeholder profile photo" />`
-    //     // mainUserIMG = `<img src="../img/placeholder.JPG" alt="placeholder profile photo" />`
-    // };
    
    document.querySelector('#nesterIMG').innerHTML = mainUserIMG;
 };
@@ -53,8 +47,6 @@ function renderMessagesList(messages) {
     messages.forEach(createMessageList);
 };
 
-// think i need to add "location.href = './nest.html';"" somewhere in here to refresh the page. but i want it only to happen when there's a new post . . . not constantly. Not sure how to do it. Maybe some kind of if statement?
-
 function createMessageList(message) {
     // learned that if you have two columns in here, you have to also grab the row from html. otherwise the formatting goes wild.
     var messageListItem = `<div class="row card">
@@ -66,8 +58,7 @@ function createMessageList(message) {
             <p id="postWords">${message.body}</p>
         </div>
     </div>`;
-    // document.querySelector('#postCard').innerHTML += messageListItem;
-    // document.querySelector('#postCard').innerHTML = document.querySelector('#postCard').innerHTML + messageListItem;
+
     document.querySelector('#postCard').innerHTML = messageListItem + document.querySelector('#postCard').innerHTML;
     // originally had it messageListItem + document . . ., but this was bringing in the message list backwards. Even though it's putting the latest message "first," the code was telling each message to come in at the top, so it was pushing the latest message down as the rest filtered in. instead, have to use +=messageListItem or the long version, document.querySelector('#postCard').innerHTML + messageListItem;
 };
@@ -80,8 +71,6 @@ document.querySelector('#textArea').addEventListener('keypress', function(e) {
         postChirp();
     }
 })
-
-//Need to figure out why warning box from else statment won't work. 
 
 function postChirp() {
     var body = document.querySelector('#textArea').value;
@@ -114,9 +103,7 @@ function postChirp() {
     
 };
 
-//need a function for logging out. copied this right out of collin's code, but it's not working here.
 document.querySelector('.logout').addEventListener('click', function() {
     sessionStorage.clear();
-    // alert("You signed out!");
     location.href = './index.html';
 });
